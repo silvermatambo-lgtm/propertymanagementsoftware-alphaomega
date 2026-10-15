@@ -71,7 +71,7 @@ export default function Footer() {
 
         <div className="border-t border-navy-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <p>© {new Date().getFullYear()} Alpha and Omega Professional Accountants and Tax Advisors. All rights reserved.</p>
-          <p>Alpha Omega Rent Administration Software — Presentation Edition</p>
+          <p>Website designed by <a href="https://www.webdevpro.co.za" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400 transition-colors">www.WebDevPro.co.za</a> | <a href="tel:+27812159792" className="hover:text-gold-400 transition-colors">+27 81 215 9792</a> | <a href="mailto:support@webdevpro.co.za" className="hover:text-gold-400 transition-colors">support@webdevpro.co.za</a></p>
         </div>
       </div>
     </footer>
