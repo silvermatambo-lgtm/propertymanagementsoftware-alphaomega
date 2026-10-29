@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Building2, FileText, Users, AlertTriangle, Wallet, MessageCircle, Shield, BarChart3, Calendar, Send, CreditCard, ClipboardList } from 'lucide-react';
+import { Building2, FileText, Users, AlertTriangle, Wallet, BarChart3, Calendar, Send } from 'lucide-react';
 
 const SECTIONS = [
   {
