@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { getData, addExpense, formatCurrency, Expense } from '../../lib/store';
-import { Plus } from 'lucide-react';
+import { getData, addExpense, setExpenseApproval, formatCurrency, Expense } from '../../lib/store';
+import { Plus, MessageCircle, Check, X } from 'lucide-react';
 
 export default function AdminExpenses() {
   const [data, setData] = useState(getData());
@@ -12,6 +12,30 @@ export default function AdminExpenses() {
   });
 
   const refresh = () => setData(getData());
+  const requestApproval = (expense: Expense) => {
+    const building = data.buildings.find(b => b.id === expense.buildingId);
+    if (!building?.trusteePhone) {
+      alert('Add a trustee WhatsApp number in Buildings > Edit first.');
+      return;
+    }
+    const phone = building.trusteePhone.replace(/\D/g, '');
+    const text = encodeURIComponent(
+      'MTSA Holdings - Trustee expense approval request\n' +
+      'Property: ' + building.name + '\n' +
+      'Expense: ' + expense.description + '\n' +
+      'Amount: ' + formatCurrency(expense.amount) + '\n' +
+      'Reference: ' + expense.id + '\n' +
+      'Please confirm to the property manager. An administrator must record your decision in MTSA.'
+    );
+    window.open('https://wa.me/' + phone + '?text=' + text, '_blank', 'noopener,noreferrer');
+    setExpenseApproval(expense.id, 'pending', 'WhatsApp message draft opened; delivery not confirmed.');
+    refresh();
+  };
+  const recordDecision = (expense: Expense, status: 'approved' | 'rejected') => {
+    if (!window.confirm('Record this expense as ' + status + '? Confirm you have received the trustee decision outside this demo.')) return;
+    setExpenseApproval(expense.id, status, 'Decision manually recorded by admin.');
+    refresh();
+  };
   const expenses = filterBuilding ? data.expenses.filter((e) => e.buildingId === filterBuilding) : data.expenses;
 
   const handleAdd = (e: React.FormEvent) => {
@@ -26,7 +50,7 @@ export default function AdminExpenses() {
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-navy-900">Expenses</h1>
-          <p className="text-sm text-stone-500">Post electricity, rates, repairs and other disbursements</p>
+          <p className="text-sm text-stone-500">Track expenses and manually record trustee decisions. WhatsApp opens an approval request draft.</p>
         </div>
         <div className="flex gap-2">
           <select className="border rounded-lg px-3 py-2 text-sm" value={filterBuilding} onChange={(e) => setFilterBuilding(e.target.value)}>
@@ -82,6 +106,7 @@ export default function AdminExpenses() {
         </form>
       )}
 
+      <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 p-3 rounded-lg mb-4">Approval is a manual demo workflow; WhatsApp only opens a message draft. Pending/rejected trust expenses are excluded from the illustrative ledger.</p>
       <div className="bg-white rounded-xl border overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-stone-50 text-left text-xs text-stone-500 uppercase">
@@ -92,6 +117,8 @@ export default function AdminExpenses() {
               <th className="px-4 py-3">Description</th>
               <th className="px-4 py-3">Amount</th>
               <th className="px-4 py-3">Trust</th>
+              <th className="px-4 py-3">Approval</th>
+              <th className="px-4 py-3">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -105,6 +132,14 @@ export default function AdminExpenses() {
                   <td className="px-4 py-3">{e.description}</td>
                   <td className="px-4 py-3 font-semibold">{formatCurrency(e.amount)}</td>
                   <td className="px-4 py-3">{e.paidFromTrust ? 'Yes' : 'No'}</td>
+                  <td className="px-4 py-3 text-xs capitalize">{e.paidFromTrust ? (e.approvalStatus || 'pending') : 'Not required'}</td>
+                  <td className="px-4 py-3">
+                    {e.paidFromTrust && <div className="flex items-center gap-2">
+                      <button title="Open WhatsApp approval draft" aria-label="Request trustee approval on WhatsApp" onClick={() => requestApproval(e)} className="text-green-700"><MessageCircle size={17}/></button>
+                      {e.approvalStatus !== 'approved' && <button title="Manually record approval" aria-label="Record trustee approval" onClick={() => recordDecision(e, 'approved')} className="text-emerald-700"><Check size={17}/></button>}
+                      {e.approvalStatus !== 'rejected' && <button title="Manually record rejection" aria-label="Record trustee rejection" onClick={() => recordDecision(e, 'rejected')} className="text-red-700"><X size={17}/></button>}
+                    </div>}
+                  </td>
                 </tr>
               );
             })}
