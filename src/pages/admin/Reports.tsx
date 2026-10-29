@@ -42,7 +42,7 @@ export default function AdminReports() {
       <div className="bg-white rounded-xl border p-6" id="report">
         <div className="flex justify-between mb-6">
           <div>
-            <img src="/logo.png" alt="Logo" className="h-10 mb-1" />
+            <img src="/mtsa-logo.svg" alt="Logo" className="h-10 mb-1" />
             <p className="font-bold text-navy-900 text-sm">MTSA Property Management Software</p>
           </div>
           <div className="text-right">
