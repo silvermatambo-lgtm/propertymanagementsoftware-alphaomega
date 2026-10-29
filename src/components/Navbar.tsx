@@ -46,16 +46,16 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/logo.png"
-              alt="Alpha and Omega Logo"
+              src="/mtsa-logo.svg"
+              alt="MTSA Holdings Logo"
               className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105"
             />
             <div className="hidden sm:block">
               <p className="text-white font-bold text-base leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Alpha Omega
+                MTSA Holdings
               </p>
               <p className="text-gold-400 text-[10px] tracking-widest uppercase font-medium">
-                Rent Administration
+                Property Management
               </p>
             </div>
           </Link>
