@@ -35,7 +35,7 @@ export default function AdminLayout() {
       <aside className="hidden lg:flex flex-col w-64 bg-navy-900 text-white shrink-0">
         <div className="p-5 border-b border-navy-800">
           <Link to="/" className="flex items-center gap-3">
-            <img src="/logo.png" alt="Logo" className="h-10 w-10 object-contain" />
+            <img src="/mtsa-logo.svg" alt="Logo" className="h-10 w-10 object-contain" />
             <div>
               <p className="font-bold text-sm leading-tight">MTSA Holdings</p>
               <p className="text-gold-400 text-[10px] uppercase tracking-wider">Property Management</p>
@@ -73,7 +73,7 @@ export default function AdminLayout() {
       <div className="flex-1 flex flex-col min-w-0">
         <header className="lg:hidden bg-navy-900 text-white px-4 py-3 flex items-center justify-between sticky top-0 z-30">
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="Logo" className="h-8 w-8" />
+            <img src="/mtsa-logo.svg" alt="Logo" className="h-8 w-8" />
             <span className="font-semibold text-sm">MTSA Property Admin</span>
           </div>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2">
