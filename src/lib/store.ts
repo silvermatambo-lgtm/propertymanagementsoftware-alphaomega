@@ -11,6 +11,7 @@ export interface Building {
   units: number;
   bankAccount?: string;
   trustAccount?: string;
+  trusteePhone?: string;
   createdAt: string;
 }
 
@@ -65,6 +66,32 @@ export interface Expense {
   amount: number;
   date: string;
   paidFromTrust: boolean;
+  approvalStatus?: 'pending' | 'approved' | 'rejected';
+  approvalRequestedAt?: string;
+  approvedAt?: string;
+  approvalNotes?: string;
+}
+
+export interface Owner {
+  id: string;
+  buildingId: string;
+  name: string;
+  email: string;
+  phone: string;
+  address?: string;
+  bankDetails?: string;
+  notes?: string;
+}
+
+export interface CashbookEntry {
+  id: string;
+  buildingId: string;
+  date: string;
+  description: string;
+  reference: string;
+  amount: number;
+  direction: 'in' | 'out';
+  account: 'trust' | 'operating';
 }
 
 export interface AppData {
@@ -73,6 +100,8 @@ export interface AppData {
   invoices: Invoice[];
   payments: Payment[];
   expenses: Expense[];
+  owners: Owner[];
+  cashbook: CashbookEntry[];
   lastUpdated: string;
 }
 
@@ -299,13 +328,21 @@ const DEMO_DATA: AppData = {
       paidFromTrust: false,
     },
   ],
+  owners: [],
+  cashbook: [],
   lastUpdated: new Date().toISOString(),
 };
 
 function load(): AppData {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw) as AppData;
+    if (raw) {
+      const parsed = JSON.parse(raw) as Partial<AppData>;
+      return { ...DEMO_DATA, ...parsed,
+        owners: Array.isArray(parsed.owners) ? parsed.owners : [],
+        cashbook: Array.isArray(parsed.cashbook) ? parsed.cashbook : [],
+      };
+    }
   } catch {}
   // Seed demo data on first load
   save(DEMO_DATA);
@@ -372,6 +409,8 @@ export function deleteBuilding(id: string) {
   data.invoices = data.invoices.filter((i) => i.buildingId !== id);
   data.payments = data.payments.filter((p) => p.buildingId !== id);
   data.expenses = data.expenses.filter((e) => e.buildingId !== id);
+  data.owners = data.owners.filter((o) => o.buildingId !== id);
+  data.cashbook = data.cashbook.filter((e) => e.buildingId !== id);
   save(data);
 }
 
@@ -455,10 +494,49 @@ export function addPayment(p: Omit<Payment, 'id'>): Payment {
 
 export function addExpense(e: Omit<Expense, 'id'>): Expense {
   const data = load();
-  const expense: Expense = { ...e, id: 'e' + Date.now() };
+  const expense: Expense = { ...e, id: 'e' + Date.now(), approvalStatus: e.paidFromTrust ? 'pending' : 'approved' };
   data.expenses.push(expense);
   save(data);
   return expense;
+}
+
+
+export function addOwner(owner: Omit<Owner, 'id'>): Owner {
+  const data = load();
+  const created = { ...owner, id: 'o' + crypto.randomUUID() };
+  data.owners.push(created);
+  save(data);
+  return created;
+}
+
+export function updateOwner(id: string, fields: Partial<Owner>) {
+  const data = load();
+  data.owners = data.owners.map(o => o.id === id ? { ...o, ...fields, id: o.id } : o);
+  save(data);
+}
+
+export function deleteOwner(id: string) {
+  const data = load();
+  data.owners = data.owners.filter(o => o.id !== id);
+  save(data);
+}
+
+export function addCashbookEntry(entry: Omit<CashbookEntry, 'id'>) {
+  if (!Number.isFinite(entry.amount) || entry.amount <= 0) throw new Error('Enter a valid positive amount');
+  const data = load();
+  data.cashbook.push({ ...entry, id: 'cb' + crypto.randomUUID() });
+  save(data);
+}
+
+export function setExpenseApproval(id: string, status: 'pending' | 'approved' | 'rejected', notes = '') {
+  const data = load();
+  const expense = data.expenses.find(e => e.id === id);
+  if (!expense) return;
+  expense.approvalStatus = status;
+  expense.approvalNotes = notes;
+  if (status === 'pending') expense.approvalRequestedAt = new Date().toISOString();
+  if (status === 'approved') expense.approvedAt = new Date().toISOString();
+  save(data);
 }
 
 export function getBuildingStats(buildingId: string) {
