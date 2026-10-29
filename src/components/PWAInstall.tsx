@@ -46,9 +46,9 @@ export default function PWAInstall() {
         </button>
 
         <div className="flex items-center gap-3 mb-3">
-          <img src="/logo.png" alt="Alpha and Omega logo" className="w-12 h-12 object-contain rounded-xl border border-stone-100 p-1 bg-white" />
+          <img src="/mtsa-logo.svg" alt="MTSA Holdings logo" className="w-12 h-12 object-contain rounded-xl border border-stone-100 p-1 bg-white" />
           <div>
-            <p className="font-bold text-stone-800 text-sm leading-tight">Alpha and Omega</p>
+            <p className="font-bold text-stone-800 text-sm leading-tight">MTSA Holdings</p>
             <p className="text-amber-500 text-xs">Property Management Software</p>
           </div>
         </div>
