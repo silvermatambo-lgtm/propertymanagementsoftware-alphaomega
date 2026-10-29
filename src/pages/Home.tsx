@@ -21,13 +21,13 @@ export default function Home() {
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, #c9a84c 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0a2540 0%, transparent 40%)' }} />
         <div className="relative max-w-7xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-gold-400 text-sm font-bold uppercase tracking-widest mb-4">Professional Accountants & Tax Advisors</p>
+            <p className="text-gold-400 text-sm font-bold uppercase tracking-widest mb-4">Property Management · Deal Makers · Business Brokers · Online Media</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Alpha Omega<br />
-              <span className="text-gold-400">Rent Administration</span>
+              MTSA Holdings<br />
+              <span className="text-gold-400">Property Management</span>
             </h1>
             <p className="text-stone-300 text-lg leading-relaxed mb-8 max-w-xl">
-              Complete rent and levy management for Managing Agents. Track monies owed, rental income, expenses, deposits in trust, arrears and produce all the reports you need — building by building.
+              MTSA Holdings brings property management, deal making, business brokerage and online media under one name. This platform provides rent and levy management for managing agents. Track monies owed, rental income, expenses, deposits in trust, arrears and produce all the reports you need — building by building.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/admin/login" className="inline-flex items-center gap-2 px-6 py-3.5 bg-gold-500 hover:bg-gold-400 text-navy-900 font-semibold rounded-lg transition-all hover:-translate-y-0.5">
@@ -40,7 +40,7 @@ export default function Home() {
             <p className="mt-6 text-stone-500 text-sm">Demo password: <span className="text-gold-400 font-mono">280385</span> · Data stored in your browser</p>
           </div>
           <div className="hidden lg:flex justify-center">
-            <img src="/logo.png" alt="Alpha and Omega" className="w-72 h-72 object-contain drop-shadow-2xl" />
+            <img src="/mtsa-logo.svg" alt="MTSA Holdings" className="w-72 h-72 object-contain drop-shadow-2xl" />
           </div>
         </div>
       </section>
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 gap-8 text-stone-600 leading-relaxed">
             <div className="space-y-4">
-              <p>The Rent Administration System enables Managing Agents to keep track of monies owed by the Tenant to the Landlord, as well as monies collected (Rental Income) and that spent (Expenses) on behalf of the Landlord.</p>
+              <p>The Property Management System enables Managing Agents to keep track of monies owed by the Tenant to the Landlord, as well as monies collected (Rental Income) and that spent (Expenses) on behalf of the Landlord.</p>
               <p>This is done by raising debits on the Tenants’ accounts and sending out detailed statements (optional) and posting details of rentals paid. The Rentroll reflects these details for all the tenants of the building.</p>
               <p>The Managing Agent can also post details of expenses paid out, e.g. electricity, rates, repairs, and print a Financial/Disbursement (Income and Expenditure) Statement reflecting all income/expenses.</p>
               <p>Track is kept of all deposits held in trust on behalf of the Tenants. The Trust Account report reflects the monies held in your Bank Account and the breakdown of to whom that money belongs.</p>
