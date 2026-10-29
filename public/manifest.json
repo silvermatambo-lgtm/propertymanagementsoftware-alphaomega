@@ -1,7 +1,7 @@
 {
-  "name": "MTSA Holdings Property Management",
-  "short_name": "MTSA Holdings Rent",
-  "description": "Rent and levy administration software for Managing Agents",
+  "name": "MTSA Property Management Software",
+  "short_name": "MTSA Property",
+  "description": "Property management software by MTSA Holdings",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a2540",
@@ -9,16 +9,10 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/mtsa-logo.svg",
+      "src": "/mtsa-logo.svg?v=2",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/mtsa-logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
