@@ -1,4 +1,4 @@
-# Alpha Omega Rent Administration Software — Admin Guide
+# MTSA Property Management Software — Admin Guide
 
 **Presentation Edition**  
 Password: `280385`
@@ -33,14 +33,19 @@ Each building is completely separate:
 
 - Own tenants, balances, invoices, payments and expenses
 - Type: **Rental**, **Levy** or **Sectional Title**
-- Bank account and Trust account references
+- Editable bank and trust account references, plus trustee WhatsApp contact (demo only)
 - Quick stats: tenant count, arrears, total owed, deposits
 
 **Add Building** creates a new isolated portfolio unit.
 
 ---
 
-## 4. Tenants
+## 4. Property Owners and Tenants
+
+- Owners: add a contact and assign them to one building in the Owners menu.
+- Store only masked bank references until a secure database is connected.
+
+## 4a. Tenants
 
 - Filter by building
 - Record name, unit, email, phone, deposit, lease dates and renewal date
@@ -79,15 +84,20 @@ Each building is completely separate:
 
 ---
 
-## 8. Expenses
+## 8. Expenses and Trustee Approval
 
 - Post electricity, rates, repairs, management fees, insurance, etc.
 - Flag whether paid from the Trust Account
-- Feeds into the Income & Expenditure and Auditor reports
+- From-trust expenses start pending. Open a WhatsApp approval draft for the trustee, then manually record approved or rejected. WhatsApp does not transmit automatically and receipt is not verified.
+- Pending and rejected trust expenses do not enter the demonstration GL.
 
 ---
 
-## 9. Statements & Tenant Ledgers
+## 9. Cashbook and Statements
+
+Cashbook shows recorded tenant payments, eligible expenses, and any manual entries. Filter by building, trust/operating account and dates. It is NOT reconciled against a bank statement. Do not post a manual duplicate of an existing payment.
+
+### Statements & Tenant Ledgers
 
 1. Select a building, then a tenant
 2. View the full ledger card (debits and credits with running balance)
@@ -104,9 +114,12 @@ Available report types (filter by building):
 | **Rentroll** | All tenants of the building with balances and deposits |
 | **Trust Account** | Breakdown of deposits held and to whom they belong |
 | **Income & Expenditure** | Payments received vs expenses (Financial / Disbursement Statement) |
-| **Auditor’s Report** | Summary suitable for tax / year-end (12-month view in production) |
+| **Auditor’s Report** | Demonstration summary; not independently audited | 
+| **Trial Balance (TB)** | Balanced illustrative account closing amounts based on demo transactions |
+| **General Ledger (GL)** | Debit/credit entries created from demo invoices, payments and expenses |
+| **Owners' Statement** | Property-level receipts/expenses for owners; not an individual ownership allocation |
 
-All reports are print-ready.
+All reports are printable. These are not compliant or audited trust-account financial statements: opening balances, VAT, allocations, journal rules and bank reconciliation must be verified.
 
 ---
 
@@ -128,7 +141,7 @@ The original system supports:
 - Read-only access
 - Full administrator access
 
-This presentation edition uses a single admin password. Production deployments would implement role-based access control.
+This presentation edition uses a publicly known single admin password. It is NOT safe for real financial or personal records. Production requires server-side role-based permissions, a secure shared database and audit logs.
 
 ---
 
@@ -144,7 +157,7 @@ This presentation edition uses a single admin password. Production deployments w
 1. Push the project to a GitHub repository
 2. Import into Vercel
 3. Framework Preset: **Vite**
-4. Build Command: `npm run build`
+4. Build Command: `npm run typecheck && npm run build`
 5. Output Directory: `dist`
 6. Deploy
 
@@ -152,4 +165,4 @@ The included `vercel.json` already handles SPA routing.
 
 ---
 
-© Alpha and Omega Professional Accountants and Tax Advisors
+© MTSA Holdings
