@@ -21,11 +21,11 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-navy-950 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <img src="/logo.png" alt="Alpha Omega" className="h-20 mx-auto mb-4" />
+          <img src="/mtsa-logo.svg" alt="MTSA Holdings" className="h-20 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
             Admin Login
           </h1>
-          <p className="text-stone-400 text-sm mt-1">Alpha Omega Rent Administration</p>
+          <p className="text-stone-400 text-sm mt-1">MTSA Holdings Property Management</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-8">
