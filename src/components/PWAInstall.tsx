@@ -46,7 +46,7 @@ export default function PWAInstall() {
         </button>
 
         <div className="flex items-center gap-3 mb-3">
-          <img src="/mtsa-logo.svg" alt="MTSA Holdings logo" className="w-12 h-12 object-contain rounded-xl border border-stone-100 p-1 bg-white" />
+          <img src="/mtsa-logo.svg?v=2" alt="MTSA Holdings logo" className="w-12 h-12 object-contain rounded-xl border border-stone-100 p-1 bg-white" />
           <div>
             <p className="font-bold text-stone-800 text-sm leading-tight">MTSA Holdings</p>
             <p className="text-amber-500 text-xs">Property Management Software</p>
@@ -54,7 +54,7 @@ export default function PWAInstall() {
         </div>
 
         <p className="text-stone-600 text-xs leading-relaxed mb-4">
-          Install this app for quick access, faster browsing, and a better mobile experience.
+          Install MTSA Property Management Software for quick access on your phone or computer.
         </p>
 
         <div className="flex items-center gap-2">
