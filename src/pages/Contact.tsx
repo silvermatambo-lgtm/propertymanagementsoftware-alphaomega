@@ -23,14 +23,14 @@ export default function Contact() {
 
       <section className="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-12">
         <div>
-          <h2 className="text-xl font-semibold text-navy-900 mb-6">Alpha and Omega</h2>
+          <h2 className="text-xl font-semibold text-navy-900 mb-6">MTSA Holdings</h2>
           <p className="text-stone-600 mb-8">
-            Professional Accountants and Tax Advisors. Reach out for a demonstration of the full Rent Administration Software or to discuss implementation for your agency.
+            Property Management and Business Services. Reach out for a demonstration of the full Property Management Software or to discuss implementation for your agency.
           </p>
           <ul className="space-y-4 text-sm">
             <li className="flex items-center gap-3">
               <Mail className="text-gold-500" size={18} />
-              <span>info@alphaomega-accountants.co.za</span>
+              <span>Contact MTSA Holdings for enquiries</span>
             </li>
             <li className="flex items-center gap-3">
               <MapPin className="text-gold-500" size={18} />
@@ -43,8 +43,8 @@ export default function Contact() {
           {sent ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
-              <h3 className="font-semibold text-navy-900 mb-2">Message received</h3>
-              <p className="text-sm text-stone-500">This is a presentation form. In production your enquiry would be emailed to the team.</p>
+              <h3 className="font-semibold text-navy-900 mb-2">Preview completed — message not sent</h3>
+              <p className="text-sm text-stone-500">This is a demonstration form and does not send messages. Contact MTSA Holdings through its official channels when supplied.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -86,7 +86,7 @@ export default function Contact() {
                 />
               </div>
               <button type="submit" className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-navy-900 hover:bg-navy-800 text-white font-semibold rounded-lg">
-                <Send size={16} /> Send Message
+                <Send size={16} /> Preview Enquiry (Demo)
               </button>
             </form>
           )}
