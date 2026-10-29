@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { getData, formatCurrency, getBuildingStats } from '../../lib/store';
 import { Printer } from 'lucide-react';
+import AccountingReports from './AccountingReports';
 
 export default function AdminReports() {
   const [data] = useState(getData());
   const [buildingId, setBuildingId] = useState(data.buildings[0]?.id || '');
-  const [reportType, setReportType] = useState<'rentroll' | 'trust' | 'income' | 'auditor'>('rentroll');
+  const [reportType, setReportType] = useState<'rentroll' | 'trust' | 'income' | 'auditor' | 'tb' | 'gl' | 'owner'>('rentroll');
 
   const building = data.buildings.find((b) => b.id === buildingId);
   const stats = buildingId ? getBuildingStats(buildingId) : null;
@@ -17,7 +18,7 @@ export default function AdminReports() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-navy-900">Reports</h1>
-        <p className="text-sm text-stone-500">Rentroll · Trust Account · Income & Expenditure · Auditor’s Report</p>
+        <p className="text-sm text-stone-500">Rentroll · Trust Account · Income & Expenditure · Trial Balance · General Ledger · Owners' Statements</p>
       </div>
 
       <div className="flex flex-wrap gap-3 mb-6">
@@ -29,6 +30,9 @@ export default function AdminReports() {
           <option value="trust">Trust Account Report</option>
           <option value="income">Income & Expenditure</option>
           <option value="auditor">Auditor’s Report</option>
+          <option value="tb">Trial Balance (TB)</option>
+          <option value="gl">General Ledger (GL)</option>
+          <option value="owner">Owners’ Statement</option>
         </select>
         <button onClick={() => window.print()} className="inline-flex items-center gap-2 px-4 py-2 bg-navy-900 text-white text-sm font-semibold rounded-lg">
           <Printer size={16} /> Print
@@ -39,7 +43,7 @@ export default function AdminReports() {
         <div className="flex justify-between mb-6">
           <div>
             <img src="/logo.png" alt="Logo" className="h-10 mb-1" />
-            <p className="font-bold text-navy-900 text-sm">Alpha Omega Rent Administration</p>
+            <p className="font-bold text-navy-900 text-sm">MTSA Property Management Software</p>
           </div>
           <div className="text-right">
             <p className="font-semibold text-navy-900 capitalize">{reportType.replace('_', ' ')} Report</p>
@@ -170,6 +174,10 @@ export default function AdminReports() {
               </p>
             </div>
           </div>
+        )}
+
+        {(reportType === 'tb' || reportType === 'gl' || reportType === 'owner') && (
+          <AccountingReports data={data} buildingId={buildingId} reportType={reportType} />
         )}
 
         {reportType === 'auditor' && (
