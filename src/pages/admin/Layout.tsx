@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useNavigate, Link } from 'react-router-dom';
 import {
   LayoutDashboard, Building2, Users, FileText, CreditCard,
-  AlertTriangle, Wallet, FileBarChart, LogOut, Menu, X, BookOpen
+  AlertTriangle, Wallet, FileBarChart, LogOut, Menu, X, BookOpen, Landmark
 } from 'lucide-react';
 import { useState } from 'react';
 import { logout } from '../../lib/store';
@@ -10,6 +10,8 @@ const NAV = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/admin/buildings', label: 'Buildings', icon: Building2 },
   { to: '/admin/tenants', label: 'Tenants', icon: Users },
+  { to: '/admin/owners', label: 'Owners', icon: Users },
+  { to: '/admin/cashbook', label: 'Cashbook', icon: Landmark },
   { to: '/admin/invoices', label: 'Invoices', icon: FileText },
   { to: '/admin/payments', label: 'Payments', icon: CreditCard },
   { to: '/admin/arrears', label: 'Arrears', icon: AlertTriangle },
@@ -35,8 +37,8 @@ export default function AdminLayout() {
           <Link to="/" className="flex items-center gap-3">
             <img src="/logo.png" alt="Logo" className="h-10 w-10 object-contain" />
             <div>
-              <p className="font-bold text-sm leading-tight">Alpha Omega</p>
-              <p className="text-gold-400 text-[10px] uppercase tracking-wider">Rent Admin</p>
+              <p className="font-bold text-sm leading-tight">MTSA Holdings</p>
+              <p className="text-gold-400 text-[10px] uppercase tracking-wider">Property Management</p>
             </div>
           </Link>
         </div>
@@ -72,7 +74,7 @@ export default function AdminLayout() {
         <header className="lg:hidden bg-navy-900 text-white px-4 py-3 flex items-center justify-between sticky top-0 z-30">
           <div className="flex items-center gap-2">
             <img src="/logo.png" alt="Logo" className="h-8 w-8" />
-            <span className="font-semibold text-sm">Alpha Omega Admin</span>
+            <span className="font-semibold text-sm">MTSA Property Admin</span>
           </div>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2">
             {sidebarOpen ? <X size={22} /> : <Menu size={22} />}
@@ -110,6 +112,7 @@ export default function AdminLayout() {
         )}
 
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-x-auto">
+          <p className="mb-4 text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 print:hidden">Demonstration environment: records are saved only in this browser, not shared between staff. Do not enter live tenant or bank details.</p>
           <Outlet />
         </main>
       </div>
