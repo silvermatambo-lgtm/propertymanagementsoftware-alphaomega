@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Phone, MessageCircle, FileText } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Phone, FileText } from 'lucide-react';
 
 const SLIDES = [
   {
