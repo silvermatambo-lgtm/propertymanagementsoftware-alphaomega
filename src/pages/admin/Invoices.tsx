@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getData, addInvoice, updateInvoice, formatCurrency, Invoice } from '../../lib/store';
-import { Plus, Send, CheckCircle, MessageCircle } from 'lucide-react';
+import { Plus, CheckCircle, MessageCircle } from 'lucide-react';
 
 export default function AdminInvoices() {
   const [data, setData] = useState(getData());
