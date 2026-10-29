@@ -1,56 +1,30 @@
-# Alpha Omega Rent Administration Software
+# MTSA Property Management Software
 
-Professional rent and levy management for Managing Agents.
+Property software under **MTSA Holdings**: property management, deal makers, business brokers, media and online media.
 
-Built with React 18 + TypeScript + Vite + Tailwind CSS. Presentation edition uses browser localStorage (no backend required).
+## Demonstration Modules
 
-## Features
+- Buildings: editable addresses, units, bank/trust account references and trustee WhatsApp contact.
+- Tenants and Owners: contact details, assigned properties, leases, balances and deposits.
+- Invoices, payments, arrears and printable tenant statements.
+- Cashbook: receipts, expenses and manual entries, by property and account.
+- Expenses: trustee WhatsApp approval-request draft and manually recorded approval/rejection.
+- Reports: rentroll, trust deposits, income/expenditure, Trial Balance (TB), General Ledger (GL), and Owners' Statement.
 
-- Multi-building isolation (rentals, levies, sectional title)
-- Tenant ledgers, invoices (including recurring), payments
-- Arrears control with interest & late penalties
-- Trust account tracking and reports
-- Income & Expenditure / Auditor’s reports
-- WhatsApp-enabled statements and reminders
-- Printable statements and reports
-- Admin guide (downloadable)
+**Important:** This is only a demonstration. Records are saved in the current browser, not a shared database. Do not enter real tenant, owner, ID, full bank-account, or confidential trust-account data. The presentation login is not secure production authentication.
 
-## Demo Login
+Accounting reports are illustrative. They exclude verified opening balances, bank reconciliation, VAT treatments, ownership allocations and proper trust accounting audit controls. Do not issue them as statutory or audited financial reports.
 
-- URL: `/admin/login`
-- Password: `280385`
+## Deployment
 
-## Development
+Production project on Vercel: https://mtsa-property-management-software.vercel.app/
 
-```bash
-npm install
-npm run dev
-```
+The existing repository auto-deploys on pushes to main. React 18, Vite, TypeScript and Tailwind CSS. Build command: npm run typecheck && npm run build.
 
-## Production Build
-
-```bash
-npm run build
-```
-
-## Deploy to Vercel
-
-1. Push this repository to GitHub
-2. Import the project in Vercel
-3. Framework: **Vite**
-4. Build Command: `npm run build`
-5. Output Directory: `dist`
-
-`vercel.json` is included for SPA routing support.
+Existing localStorage key retained to preserve browser-only demo records: alpha_omega_rent_data_v1.
 
 ## Branding
 
-- Logo: `public/logo.png`
-- Primary colour: Navy `#0a2540`
-- Accent: Gold `#c9a84c`
+Primary navy and gold. MTSA logo: public/mtsa-logo.svg.
 
-## Data
-
-All demo data is seeded on first load and stored in `localStorage` under the key `alpha_omega_rent_data_v1`.
-
-© Alpha and Omega Professional Accountants and Tax Advisors
+Designed by WebDevPro.
