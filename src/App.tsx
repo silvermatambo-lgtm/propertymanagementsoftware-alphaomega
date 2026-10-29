@@ -24,6 +24,8 @@ import AdminArrears from './pages/admin/Arrears';
 import AdminReports from './pages/admin/Reports';
 import AdminExpenses from './pages/admin/Expenses';
 import AdminStatements from './pages/admin/Statements';
+import AdminOwners from './pages/admin/Owners';
+import AdminCashbook from './pages/admin/Cashbook';
 import { isAuthenticated } from './lib/store';
 
 function ServiceWorkerRegistrar() {
@@ -93,6 +95,8 @@ export default function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="buildings" element={<AdminBuildings />} />
           <Route path="tenants" element={<AdminTenants />} />
+          <Route path="owners" element={<AdminOwners />} />
+          <Route path="cashbook" element={<AdminCashbook />} />
           <Route path="invoices" element={<AdminInvoices />} />
           <Route path="payments" element={<AdminPayments />} />
           <Route path="arrears" element={<AdminArrears />} />
