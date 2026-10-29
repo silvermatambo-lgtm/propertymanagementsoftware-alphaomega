@@ -1,6 +1,6 @@
 {
-  "name": "Alpha Omega Rent Administration",
-  "short_name": "Alpha Omega Rent",
+  "name": "MTSA Holdings Property Management",
+  "short_name": "MTSA Holdings Rent",
   "description": "Rent and levy administration software for Managing Agents",
   "start_url": "/",
   "display": "standalone",
@@ -9,15 +9,15 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/logo.png",
-      "sizes": "192x192",
-      "type": "image/png",
+      "src": "/mtsa-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/mtsa-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]
