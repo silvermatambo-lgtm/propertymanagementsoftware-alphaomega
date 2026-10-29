@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getData, addBuilding, updateBuilding, deleteBuilding, formatCurrency, getBuildingStats, BuildingType } from '../../lib/store';
 import { Plus, Trash2, Building2, Pencil } from 'lucide-react';
 
