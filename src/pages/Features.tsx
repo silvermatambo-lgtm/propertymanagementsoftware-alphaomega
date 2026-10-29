@@ -93,7 +93,7 @@ export default function Features() {
             Software Features
           </h1>
           <p className="text-stone-300 max-w-2xl mx-auto">
-            Built from the original Rent Administration System specification and extended with modern invoicing, WhatsApp delivery and multi-building isolation.
+            Built from the original Property Management System specification and extended with modern invoicing, WhatsApp delivery and multi-building isolation.
           </p>
         </div>
       </section>
