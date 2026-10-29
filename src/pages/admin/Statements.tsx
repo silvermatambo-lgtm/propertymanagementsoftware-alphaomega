@@ -28,7 +28,7 @@ export default function AdminStatements() {
     if (!tenant?.phone) return alert('No phone');
     const phone = tenant.phone.replace(/\D/g, '');
     const msg = encodeURIComponent(
-      `Dear ${tenant.name},\n\nYour account statement for ${building?.name} Unit ${tenant.unit}:\n\nCurrent balance: ${formatCurrency(tenant.balance)}\n\nPlease contact us if you have any queries.\n\nAlpha Omega Rent Administration`
+      `Dear ${tenant.name},\n\nYour account statement for ${building?.name} Unit ${tenant.unit}:\n\nCurrent balance: ${formatCurrency(tenant.balance)}\n\nPlease contact us if you have any queries.\n\nMTSA Holdings Property Management`
     );
     window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
   };
@@ -61,9 +61,9 @@ export default function AdminStatements() {
         <div className="bg-white rounded-xl border border-stone-200 p-6 print:shadow-none" id="statement">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <img src="/logo.png" alt="Logo" className="h-12 mb-2" />
-              <p className="font-bold text-navy-900">Alpha Omega Rent Administration</p>
-              <p className="text-xs text-stone-500">Professional Accountants and Tax Advisors</p>
+              <img src="/mtsa-logo.svg" alt="Logo" className="h-12 mb-2" />
+              <p className="font-bold text-navy-900">MTSA Holdings Property Management</p>
+              <p className="text-xs text-stone-500">Property & Business Services</p>
             </div>
             <div className="text-right">
               <p className="font-semibold text-navy-900">Tenant Statement / Ledger Card</p>
